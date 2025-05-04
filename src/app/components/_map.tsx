@@ -1,6 +1,6 @@
 'use client'
 import React from "react";
-import L from 'leaflet';
+// import L from 'leaflet';
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 
 type MapProps = {
@@ -9,7 +9,7 @@ type MapProps = {
   error: string | null;
 };
 
-const icon = L.icon({ iconUrl: "/icon-location.svg", iconSize: [25, 41] });
+// const icon = L.icon({ iconUrl: "/icon-location.svg", iconSize: [25, 41] });
 
 const Map = ({ lat, long, error }: MapProps) => {
 
@@ -29,7 +29,7 @@ const Map = ({ lat, long, error }: MapProps) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[lat, long]} icon={icon}/>
+      <Marker position={[lat, long]}/>
     </MapContainer>
   );
 };

@@ -3,8 +3,12 @@ import Image from "next/image";
 import { AddressBar, SearchBar } from "./components";
 import searchBgImage from "../../public/pattern-bg-desktop.png";
 import searchBgImageMobile from "../../public/pattern-bg-mobile.png";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+const Map = dynamic(() => import("./components/_map"), {
+  loading: () => <p>A map is loading</p>,
+  ssr: false,
+});
 
 const api =
   "https://geo.ipify.org/api/v2/country,city?apiKey=at_V6M7cRmRtr4ApVpZqCVzAHqiuKVHK&ipAddress=";
@@ -22,15 +26,6 @@ export default function Home() {
     timezone: string;
     isp: string;
   }>({ ip: "", lat: 0, long: 0, location: "", timezone: "", isp: "" });
-
-  const Map = useMemo(
-    () =>
-      dynamic(() => import("./components/_map"), {
-        loading: () => <p>A map is loading</p>,
-        ssr: false,
-      }),
-    [lat, long]
-  );
 
   useEffect(() => {
     if (userIP === "") handleSearch(userIP);
