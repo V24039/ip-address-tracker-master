@@ -3,7 +3,9 @@ import { Rubik } from "next/font/google";
 import "./globals.css";
 
 const rubik = Rubik({
-  variable: "--font-rubik"
+  variable: "--font-rubik",
+  subsets: ["latin"],
+
 })
 
 export const metadata: Metadata = {
